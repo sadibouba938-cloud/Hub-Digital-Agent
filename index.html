@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Hub Digital — Agents IA pour le e-commerce au Sénégal</title>
+<meta name="description" content="Hub Digital Agent - Plateforme d'agents IA pour e-commerce et services digitaux au Sénégal. Automatisations, intégrations API, paiements mobiles. Conçu à Dakar pour l'Afrique.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Manrope:wght@600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      fontFamily: { sans: ['Inter','system-ui','sans-serif'], display: ['Manrope','sans-serif'], mono: ['JetBrains Mono','monospace'] },
+      colors: {
+        ink: '#0B1220', nav: '#0A2540', primary: '#FF6B35', primary2: '#FF3B30', accent: '#00D1A0', sand: '#FFF7ED', line: '#E6E8EC'
+      },
+      boxShadow: { soft: '0 8px 30px rgba(10,37,64,0.08)', card: '0 10px 40px rgba(10,37,64,0.10)', glow: '0 0 0 1px rgba(255,107,53,0.15), 0 20px 60px rgba(255,107,53,0.18)' }
+    }
+  }
+}
+</script>
+<style>
+html{scroll-behavior:smooth}
+::-webkit-scrollbar{width:8px;height:8px}
+::-webkit-scrollbar-thumb{background:#CBD5E1;border-radius:999px}
+.gradient-hero{background: radial-gradient(1200px 600px at 20% -10%, #FFF0E6 0%, transparent 60%), radial-gradient(900px 500px at 90% 10%, #E0F2FF 0%, transparent 60%), linear-gradient(180deg,#FFFFFF 0%, #F8FAFC 100%)}
+.glass{backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px)}
+.mesh{background-image: radial-gradient(rgba(10,37,64,0.06) 1px, transparent 1px); background-size: 18px 18px}
+.shine{position:relative; overflow:hidden}
+.shine:after{content:""; position:absolute; inset:0; background:linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.7) 50%, transparent 60%); transform: translateX(-100%); transition: transform 900ms ease}
+.shine:hover:after{transform: translateX(100%)}
+</style>
+</head>
+<body class="bg-white text-ink antialiased selection:bg-orange-100">
+  <!-- Announcement -->
+  <div class="w-full bg-ink text-white text-[13px]">
+    <div class="max-w-[1200px] mx-auto px-4 py-2.5 flex items-center justify-center gap-3">
+      <span class="hidden sm:inline-flex items-center gap-2 bg-white/10 border border-white/15 rounded-full px-3 py-1 text-xs font-medium"><span class="w-2 h-2 rounded-full bg-accent animate-pulse"></span> Nouveau</span>
+      <span class="text-center">Agent IA disponible en <b>Français, Wolof & Anglais</b> — Intégration Wave & Orange Money en 2 minutes</span>
+      <a href="#demo" class="hidden md:inline-flex items-center gap-1 text-primary font-semibold hover:underline">Essayer la démo <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></a>
+    </div>
+  </div>
+
+  <!-- Nav -->
+  <header class="sticky top-0 z-40 bg-white/80 glass border-b border-line">
+    <div class="max-w-[1200px] mx-auto px-4 h-[64px] flex items-center justify-between gap-6">
+      <a href="#" class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-xl bg-ink text-white grid place-items-center font-black text-[16px] tracking-tight">H.</div>
+        <div class="leading-none">
+          <div class="font-display font-extrabold text-[18px] tracking-tight">HUB DIGITAL</div>
+          <div class="text-[10px] tracking-[0.18em] font-semibold text-slate-500 -mt-0.5">DAKAR • SÉNÉGAL</div>
+        </div>
+        <span class="hidden lg:inline-flex ml-2 bg-orange-50 text-primary border border-orange-200 text-[11px] font-bold px-2 py-1 rounded-full">AGENT v2.1</span>
+      </a>
+      <nav class="hidden lg:flex items-center gap-7 text-sm font-medium text-slate-600">
+        <a href="#services" class="hover:text-ink">Solutions</a>
+        <a href="#marche" class="hover:text-ink">Comment ça marche</a>
+        <a href="#dashboard" class="hover:text-ink">Dashboard</a>
+        <a href="#tarifs" class="hover:text-ink">Tarifs</a>
+        <a href="#faq" class="hover:text-ink">Ressources</a>
+        <span class="w-px h-5 bg-line"></span>
+        <a href="#" class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-green-500"></span> Système opérationnel</a>
+      </nav>
+      <div class="hidden lg:flex items-center gap-3">
+        <a href="#demo" class="px-4 py-2 rounded-full font-semibold text-sm border border-line hover:bg-slate-50">Se connecter</a>
+        <a href="#demo" class="px-5 py-2.5 rounded-full bg-ink text-white font-semibold text-sm shadow-soft hover:bg-black flex items-center gap-2">Démarrer gratuitement <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+      </div>
+      <button id="burger" class="lg:hidden w-10 h-10 grid place-items-center rounded-xl border border-line">
+        <i data-lucide="menu" class="w-5 h-5"></i>
+      </button>
+    </div>
+    <div id="mobileNav" class="hidden lg:hidden border-t border-line bg-white">
+      <div class="px-4 py-4 grid gap-3 text-sm font-medium">
+        <a href="#services" class="py-2">Solutions</a>
+        <a href="#marche" class="py-2">Comment ça marche</a>
+        <a href="#dashboard" class="py-2">Dashboard</a>
+        <a href="#tarifs" class="py-2">Tarifs</a>
+        <a href="#" class="mt-2 px-4 py-3 rounded-full bg-ink text-white text-center font-semibold">Démarrer gratuitement</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="gradient-hero border-b border-line">
+    <div class="max-w-[1200px] mx-auto px-4 pt-8 pb-10 lg:pt-12 lg:pb-16">
+      <div class="grid lg:grid-cols-12 gap-8 items-center">
+        <div class="lg:col-span-6">
+          <div class="inline-flex items-center gap-2 bg-white border border-line rounded-full px-1 py-1 pr-3 shadow-soft">
+            <span class="bg-ink text-white text-xs font-bold px-3 py-1 rounded-full">NOUVEAU</span>
+            <span class="text-sm font-medium text-slate-700">Automatisez 80% de vos conversations clients</span>
+            <span class="hidden sm:inline-flex w-7 h-7 rounded-full bg-orange-50 grid place-items-center"><i data-lucide="sparkles" class="w-4 h-4 text-primary"></i></span>
+          </div>
+          <h1 class="font-display font-extrabold tracking-[-0.03em] leading-[0.95] text-[38px] sm:text-[48px] lg:text-[56px] mt-6">
+            L’IA qui
+            <span class="relative inline-block"> vend <span class="absolute -bottom-1.5 left-0 right-0 h-[10px] bg-orange-100 -z-10"></span></span> pour<br/>
+            votre business<br/>
+            <span class="text-slate-400">au Sénégal.</span>
+          </h1>
+          <p class="mt-5 text-[17px] leading-7 text-slate-600 max-w-[560px]">Hub Digital Agent centralise vos ventes <b class="text-ink">WhatsApp, Instagram, site web et boutique</b>. Paiements <b class="text-ink">Wave, Orange Money, Free Money</b>, gestion des stocks et livraisons — le tout piloté par un agent IA qui parle Wolof.</p>
+
+          <div class="mt-7 flex flex-wrap gap-3">
+            <a href="#demo" class="shine inline-flex items-center gap-2 bg-primary text-white px-6 py-3.5 rounded-full font-bold shadow-glow hover:bg-[#ff5a1a] transition">
+              <i data-lucide="play" class="w-5 h-5 fill-white"></i> Voir la démo en 60s
+            </a>
+            <a href="#tarifs" class="inline-flex items-center gap-2 bg-white border border-line px-6 py-3.5 rounded-full font-semibold hover:bg-slate-50">
+              <i data-lucide="calendar" class="w-5 h-5"></i> Réserver un appel
+            </a>
+          </div>
+
+          <div class="mt-4 flex items-center gap-3 text-sm text-slate-500">
+            <span class="flex -space-x-2">
+              <img src="https://i.pravatar.cc/100?img=12" class="w-8 h-8 rounded-full border-2 border-white object-cover"/>
+              <img src="https://i.pravatar.cc/100?img=33" class="w-8 h-8 rounded-full border-2 border-white object-cover"/>
+              <img src="https://i.pravatar.cc/100?img=15" class="w-8 h-8 rounded-full border-2 border-white object-cover"/>
+            </span>
+            <span><b class="text-ink">847</b> commerçants nous font confiance • <span class="inline-flex items-center gap-1"><span class="text-amber-400">★★★★★</span> 4.9/5</span></span>
+          </div>
+
+          <div class="mt-8 grid grid-cols-3 gap-3 max-w-[520px]">
+            <div class="bg-white border border-line rounded-2xl p-3.5 shadow-soft">
+              <div class="text-xs font-semibold tracking-widest text-slate-500">COMMANDES / JOUR</div>
+              <div class="font-display font-extrabold text-xl mt-1">+312%</div>
+              <div class="text-xs text-emerald-600 font-medium flex items-center gap-1"><i data-lucide="trending-up" class="w-3.5 h-3.5"></i> vs. avant Hub</div>
+            </div>
+            <div class="bg-white border border-line rounded-2xl p-3.5 shadow-soft">
+              <div class="text-xs font-semibold tracking-widest text-slate-500">TEMPS DE RÉPONSE</div>
+              <div class="font-display font-extrabold text-xl mt-1">&lt; 3s</div>
+              <div class="text-xs text-slate-500">24h/24, 7j/7</div>
+            </div>
+            <div class="bg-white border border-line rounded-2xl p-3.5 shadow-soft">
+              <div class="text-xs font-semibold tracking-widest text-slate-500">PAIEMENT MOBIL</div>
+              <div class="font-display font-extrabold text-xl mt-1">3x</div>
+              <div class="text-xs text-primary font-medium">taux de conversion</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Visual -->
+        <div class="lg:col-span-6 relative">
+          <div class="relative bg-white rounded-[28px] border border-line shadow-card overflow-hidden">
+            <!-- Browser bar -->
+            <div class="h-9 px-4 flex items-center gap-2 border-b border-line bg-slate-50">
+              <span class="flex gap-1.5"><span class="w-3 h-3 rounded-full bg-red-400"></span><span class="w-3 h-3 rounded-full bg-amber-400"></span><span class="w-3 h-3 rounded-full bg-green-400"></span></span>
+              <span class="ml-3 text-xs font-mono text-slate-500 flex items-center gap-2"><i data-lucide="lock" class="w-3 h-3"></i> hubdigital.sn/dashboard</span>
+              <span class="ml-auto hidden sm:inline-flex items-center gap-2 text-xs font-medium bg-white border border-line rounded-full px-2.5 py-1"><span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span> Live</span>
+            </div>
+
+            <div class="grid md:grid-cols-[300px_1fr] min-h-[520px]">
+              <!-- Chat Panel -->
+              <div class="border-r border-line bg-[#FCFCFD] p-3 flex flex-col">
+                <div class="flex items-center justify-between">
+                  <div class="font-semibold text-sm">Conversations</div>
+                  <span class="bg-primary text-white text-[11px] font-bold px-2 py-1 rounded-full">12 nouveaux</span>
+                </div>
+                <div class="mt-3 grid gap-2">
+                  <div class="flex gap-2 p-2.5 rounded-xl bg-ink text-white">
+                    <img src="https://i.pravatar.cc/100?img=5" class="w-8 h-8 rounded-full"/>
+                    <div class="min-w-0">
+                      <div class="text-xs font-semibold flex items-center gap-2">Fatou N. <span class="w-2 h-2 bg-green-400 rounded-full"></span></div>
+                      <div class="text-[11px] text-white/80 truncate">Agent: Votre commande #4821 est en route 🛵</div>
+                    </div>
+                    <span class="ml-auto text-[10px] text-white/60">à l'instant</span>
+                  </div>
+                  <div class="flex gap-2 p-2.5 rounded-xl bg-white border border-line">
+                    <img src="https://i.pravatar.cc/100?img=8" class="w-8 h-8 rounded-full"/>
+                    <div class="min-w-0">
+                      <div class="text-xs font-semibold">Moussa D.</div>
+                      <div class="text-[11px] text-slate-500 truncate">Je veux 2 boubous taille M, dispo ?</div>
+                    </div>
+                    <span class="ml-auto text-[10px] text-slate-400">2m</span>
+                  </div>
+                  <div class="flex gap-2 p-2.5 rounded-xl bg-white border border-line">
+                    <img src="https://i.pravatar.cc/100?img=26" class="w-8 h-8 rounded-full"/>
+                    <div class="min-w-0">
+                      <div class="text-xs font-semibold">Aïda S.</div>
+                      <div class="text-[11px] text-slate-500 truncate">Livaaison à Thiès possible ?</div>
+                    </div>
+                    <span class="ml-auto text-[10px] text-slate-400">5m</span>
+                  </div>
+                </div>
+
+                <!-- Conversation -->
+                <div class="mt-3 bg-white border border-line rounded-2xl p-3 flex-1 flex flex-col">
+                  <div class="flex items-center gap-2 pb-2 border-b border-line">
+                    <img src="https://i.pravatar.cc/100?img=5" class="w-7 h-7 rounded-full"/>
+                    <div><div class="text-xs font-bold">Fatou N. • WhatsApp</div><div class="text-[11px] text-emerald-600">En ligne • Wolof + FR</div></div>
+                    <span class="ml-auto w-7 h-7 grid place-items-center rounded-full bg-slate-100"><i data-lucide="phone" class="w-3.5 h-3.5"></i></span>
+                  </div>
+                  <div id="chatLog" class="flex-1 py-3 space-y-2.5 overflow-auto max-h-[220px] pr-1">
+                    <div class="flex gap-2">
+                      <div class="bg-slate-100 rounded-2xl rounded-tl-sm px-3 py-2 text-[13px] max-w-[85%]">Salam Fatou ! 😊 Tu cherches quel modèle aujourd'hui ?</div>
+                    </div>
+                    <div class="flex justify-end"><div class="bg-ink text-white rounded-2xl rounded-tr-sm px-3 py-2 text-[13px] max-w-[85%]">Slt, le boubou bleu marine en M est dispo ? Prix ?</div></div>
+                    <div class="flex gap-2"><div class="bg-primary text-white rounded-2xl rounded-tl-sm px-3 py-2 text-[13px] max-w-[85%]">Oui, disponible ✅ <b>25.000 FCFA</b>. Livraison Dakar 2.000 FCFA, Thiès 3.500 FCFA. Tu veux que je te l'ajoute au panier ?</div></div>
+                    <div class="flex justify-end"><div class="bg-ink text-white rounded-2xl rounded-tr-sm px-3 py-2 text-[13px] max-w-[85%]">Oui ajoute 1, paiement Wave ?</div></div>
+                    <div class="flex gap-2"><div class="bg-white border border-line rounded-2xl rounded-tl-sm px-3 py-2 text-[13px] max-w-[85%] shadow-sm">Parfait. Lien Wave sécurisé généré 👇<br/><span class="inline-flex items-center gap-1 mt-1 bg-[#1DC2FF] text-white text-xs font-bold px-2.5 py-1 rounded-full">Payer 27.000 FCFA avec Wave <i data-lucide="arrow-up-right" class="w-3 h-3"></i></span></div></div>
+                  </div>
+                  <div class="flex items-center gap-2 pt-2 border-t border-line">
+                    <input id="chatInput" placeholder="Écrivez un message..." class="flex-1 bg-slate-50 border border-line rounded-full px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-primary/20"/>
+                    <button id="chatSend" class="w-9 h-9 rounded-full bg-primary text-white grid place-items-center hover:bg-[#ff5a1a]"><i data-lucide="send" class="w-4 h-4"></i></button>
+                  </div>
+                  <div class="mt-2 flex gap-1.5 flex-wrap">
+                    <button class="quickReply text-xs bg-slate-50 hover:bg-slate-100 border border-line px-2.5 py-1 rounded-full">Prix livraison ?</button>
+                    <button class="quickReply text-xs bg-slate-50 hover:bg-slate-100 border border-line px-2.5 py-1 rounded-full">Wolof lañu wax ?</button>
+                    <button class="quickReply text-xs bg-slate-50 hover:bg-slate-100 border border-line px-2.5 py-1 rounded-full">Tracking commande</button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Stats Panel -->
+              <div class="p-4 mesh relative bg-white">
+                <div class="flex items-center justify-between">
+                  <div class="font-bold">Aperçu du jour</div>
+                  <span class="text-xs font-mono bg-slate-900 text-white px-2 py-1 rounded-full">FCFA</span>
+                </div>
+                <div class="mt-3 grid grid-cols-2 gap-3">
+                  <div class="bg-ink text-white rounded-2xl p-3">
+                    <div class="text-[11px] tracking-widest text-white/60 font-semibold">CHIFFRE DU JOUR</div>
+                    <div class="font-display font-extrabold text-[22px] mt-1">482 500</div>
+                    <div class="text-xs text-emerald-300 flex items-center gap-1"><i data-lucide="arrow-up-right" class="w-3 h-3"></i> +18% hier</div>
+                  </div>
+                  <div class="bg-white border border-line rounded-2xl p-3">
+                    <div class="text-[11px] tracking-widest text-slate-500 font-semibold">COMMANDES</div>
+                    <div class="font-display font-extrabold text-[22px]">23</div>
+                    <div class="text-xs text-slate-500">9 en attente</div>
+                  </div>
+                </div>
+
+                <!-- Mini chart -->
+                <div class="mt-3 bg-white border border-line rounded-2xl p-3">
+                  <div class="flex items-center justify-between text-xs font-semibold">
+                    <span>Revenus 7 jours</span>
+                    <span class="text-emerald-600">+24%</span>
+                  </div>
+                  <svg viewBox="0 0 200 60" class="w-full h-[60px] mt-2">
+                    <defs><linearGradient id="g" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="#FF6B35" stop-opacity="0.25"/><stop offset="100%" stop-color="#FF6B35" stop-opacity="0"/></linearGradient></defs>
+                    <path d="M0 45 L20 40 L40 42 L60 28 L80 30 L100 18 L120 22 L140 12 L160 15 L180 8 L200 10 L200 60 L0 60 Z" fill="url(#g)"/>
+                    <path d="M0 45 L20 40 L40 42 L60 28 L80 30 L100 18 L120 22 L140 12 L160 15 L180 8 L200 10" fill="none" stroke="#FF6B35" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="200" cy="10" r="4" fill="#FF6B35" stroke="white" stroke-width="2"/>
+                  </svg>
+                  <div class="flex justify-between text-[11px] font-mono text-slate-500"><span>LUN</span><span>MAR</span><span>MER</span><span>JEU</span><span>VEN</span><span>SAM</span><span>DIM</span></div>
+                </div>
+
+                <div class="mt-3 grid gap-2">
+                  <div class="flex items-center justify-between bg-white border border-line rounded-xl px-3 py-2.5">
+                    <div class="flex items-center gap-2"><span class="w-8 h-8 rounded-lg bg-[#00D1FF]/15 grid place-items-center"><i data-lucide="wallet" class="w-4 h-4 text-[#00A8E8]"></i></span><div><div class="text-xs font-bold">Wave</div><div class="text-[11px] text-slate-500">68% des paiements</div></div></div><span class="font-bold text-sm">328 000</span>
+                  </div>
+                  <div class="flex items-center justify-between bg-white border border-line rounded-xl px-3 py-2.5">
+                    <div class="flex items-center gap-2"><span class="w-8 h-8 rounded-lg bg-orange-100 grid place-items-center"><i data-lucide="smartphone" class="w-4 h-4 text-orange-600"></i></span><div><div class="text-xs font-bold">Orange Money</div><div class="text-[11px] text-slate-500">22% des paiements</div></div></div><span class="font-bold text-sm">98 500</span>
+                  </div>
+                </div>
+
+                <div class="mt-3 flex items-center gap-2 text-[11px] font-medium text-slate-600 bg-amber-50 border border-amber-200 rounded-xl px-3 py-2">
+                  <i data-lucide="zap" class="w-4 h-4 text-amber-600"></i> Agent a répondu à 47 clients pendant que vous dormiez
+                </div>
+              </div>
+            </div>
+
+            <div class="px-3 py-2.5 bg-slate-50 border-t border-line flex flex-wrap gap-2 text-xs text-slate-600 items-center">
+              <span class="inline-flex items-center gap-1.5 font-semibold"><i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-600"></i> Conforme données Sénégal</span>
+              <span class="w-px h-4 bg-line"></span>
+              <span>Shopify • WooCommerce • Wix • API Python</span>
+              <span class="ml-auto hidden sm:inline-flex items-center gap-1 bg-white border border-line rounded-full px-2 py-1"><span class="w-2 h-2 bg-green-500 rounded-full"></span> Temps de réponse API 42ms</span>
+            </div>
+          </div>
+
+          <!-- Floating badges -->
+          <div class="hidden xl:flex absolute -right-6 top-12 bg-white border border-line rounded-2xl shadow-soft px-3 py-2 items-center gap-2">
+            <span class="w-8 h-8 rounded-xl bg-emerald-500 text-white grid place-items-center"><i data-lucide="check" class="w-4 h-4"></i></span>
+            <div><div class="text-xs font-bold">Commande #4821 payée</div><div class="text-[11px] text-slate-500">Wave • il y a 12s</div></div>
+          </div>
+          <div class="hidden xl:flex absolute -left-8 bottom-16 bg-ink text-white rounded-2xl shadow-soft px-3 py-2.5 items-center gap-2.5">
+            <img src="https://i.pravatar.cc/100?img=31" class="w-8 h-8 rounded-full"/>
+            <div><div class="text-xs font-semibold">Livreur Paps en route</div><div class="text-[11px] text-white/70">ETA 28 min • Dakar Plateau</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Logos -->
+      <div class="mt-10 border-t border-line pt-6">
+        <div class="flex flex-wrap items-center justify-between gap-4 text-xs font-semibold tracking-widest text-slate-500">
+          <span>INTÉGRATIONS CERTIFIÉES</span>
+          <span class="hidden sm:inline h-px flex-1 bg-line mx-4"></span>
+          <span class="font-mono text-[11px]">POWERED BY SENEGAL · MADE IN DAKAR</span>
+        </div>
+        <div class="mt-5 grid grid-cols-3 sm:grid-cols-6 gap-3">
+          <div class="bg-white border border-line rounded-xl h-[56px] grid place-items-center font-black tracking-tight">wave</div>
+          <div class="bg-white border border-line rounded-xl h-[56px] grid place-items-center font-bold text-orange-600">Orange Money</div>
+          <div class="bg-white border border-line rounded-xl h-[56px] grid place-items-center font-bold">Free Money</div>
+          <div class="bg-white border border-line rounded-xl h-[56px] grid place-items-center font-bold text-[#96bf48]">Shopify</div>
+          <div class="bg-white border border-line rounded-xl h-[56px] grid place-items-center font-bold">WooCommerce</div>
+          <div class="bg-white border border-line rounded-xl h-[56px] grid place-items-center font-bold">PAPS • YOBALEMA</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="max-w-[1200px] mx-auto px-4 py-14">
+    <div class="flex flex-wrap gap-6 items-end justify-between">
+      <div>
+        <div class="inline-flex items-center gap-2 text-xs font-bold tracking-widest text-primary"><span class="w-8 h-px bg-primary"></span> SOLUTIONS HUB DIGITAL <span class="w-8 h-px bg-primary"></span></div>
+        <h2 class="font-display font-extrabold text-[32px] sm:text-[40px] tracking-tight leading-none mt-3">Tout pour vendre,<br/><span class="text-slate-400">sans vous épuiser.</span></h2>
+      </div>
+      <p class="max-w-[520px] text-slate-600">Un seul agent IA gère vos messages, votre stock, vos paiements et vos livraisons. Vous gardez le contrôle depuis un dashboard en FCFA.</p>
+    </div>
+
+    <div class="mt-8 grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <article class="group bg-white border border-line rounded-[22px] p-6 shadow-soft hover:shadow-card transition">
+        <div class="w-12 h-12 rounded-2xl bg-orange-50 border border-orange-200 grid place-items-center"><i data-lucide="bot" class="w-6 h-6 text-primary"></i></div>
+        <h3 class="font-bold text-[17px] mt-4">Agent Commercial IA 24/7</h3>
+        <p class="text-sm text-slate-600 mt-1.5 leading-6">Répond en 3 secondes sur WhatsApp, Messenger & Instagram. Français, Wolof, Anglais. Il négocie, conseille les tailles, relance les paniers abandonnés.</p>
+        <ul class="mt-3 space-y-1.5 text-sm">
+          <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-600 mt-0.5"></i> 80% de réponses automatisées</li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-600 mt-0.5"></i> Transfert humain en 1 clic</li>
+        </ul>
+        <a href="#" class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-primary">Tester le chat <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+      </article>
+
+      <article class="group bg-ink text-white rounded-[22px] p-6 shadow-card relative overflow-hidden">
+        <div class="absolute -right-10 -top-10 w-40 h-40 bg-primary/20 blur-3xl rounded-full"></div>
+        <div class="w-12 h-12 rounded-2xl bg-white/10 grid place-items-center border border-white/15"><i data-lucide="package" class="w-6 h-6 text-white"></i></div>
+        <h3 class="font-bold text-[17px] mt-4">Commandes & Stock en temps réel</h3>
+        <p class="text-sm text-white/70 mt-1.5 leading-6">Synchronisation Shopify, WooCommerce, Google Sheets. Alertes rupture, réservations, codes promo auto. Plus jamais de “désolé, c’est fini”.</p>
+        <div class="mt-4 flex gap-2">
+          <span class="text-xs font-mono bg-white/10 border border-white/15 px-2.5 py-1 rounded-full">API Python</span>
+          <span class="text-xs font-mono bg-white/10 border border-white/15 px-2.5 py-1 rounded-full">Webhooks</span>
+        </div>
+      </article>
+
+      <article class="bg-white border border-line rounded-[22px] p-6 shadow-soft hover:shadow-card transition">
+        <div class="w-12 h-12 rounded-2xl bg-sky-50 border border-sky-200 grid place-items-center"><i data-lucide="smartphone" class="w-6 h-6 text-sky-600"></i></div>
+        <h3 class="font-bold text-[17px] mt-4">Paiements mobiles locaux</h3>
+        <p class="text-sm text-slate-600 mt-1.5 leading-6">Générez un lien Wave / Orange Money / Free Money en un message. Réconciliation automatique, reçus PDF, remboursement en 1 clic.</p>
+        <div class="mt-4 flex items-center gap-2 text-xs font-bold">
+          <span class="px-2.5 py-1 rounded-full bg-slate-900 text-white">Wave</span>
+          <span class="px-2.5 py-1 rounded-full bg-orange-500 text-white">Orange</span>
+          <span class="px-2.5 py-1 rounded-full bg-slate-100 border border-line">Free</span>
+        </div>
+      </article>
+
+      <article class="bg-white border border-line rounded-[22px] p-6 shadow-soft hover:shadow-card transition">
+        <div class="w-12 h-12 rounded-2xl bg-emerald-50 border border-emerald-200 grid place-items-center"><i data-lucide="megaphone" class="w-6 h-6 text-emerald-600"></i></div>
+        <h3 class="font-bold text-[17px] mt-4">Marketing qui s’automatise</h3>
+        <p class="text-sm text-slate-600 mt-1.5 leading-6">Campagnes WhatsApp Business, SMS, relances panier, broadcast “Nouvelle collection Tabaski”. Taux d’ouverture 92% sur WhatsApp.</p>
+        <ul class="mt-3 space-y-1.5 text-sm">
+          <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-600 mt-0.5"></i> Segmentation auto (Dakar, Thiès, Touba)</li>
+        </ul>
+      </article>
+
+      <article class="bg-white border border-line rounded-[22px] p-6 shadow-soft hover:shadow-card transition">
+        <div class="w-12 h-12 rounded-2xl bg-violet-50 border border-violet-200 grid place-items-center"><i data-lucide="plug-zap" class="w-6 h-6 text-violet-600"></i></div>
+        <h3 class="font-bold text-[17px] mt-4">Intégrations API ouvertes</h3>
+        <p class="text-sm text-slate-600 mt-1.5 leading-6">REST API documentée, webhooks, automatisations Python (n8n, Zapier, Make). Branchez Paps, Yobalema, SenExpress en 5 min.</p>
+        <pre class="mt-3 bg-slate-900 text-slate-200 rounded-xl p-3 text-[12px] font-mono overflow-x-auto">POST /api/v1/orders
+{ "client": "772345678",
+  "produit": "boubou_m",
+  "paiement": "wave" }</pre>
+      </article>
+
+      <article class="bg-white border border-line rounded-[22px] p-6 shadow-soft hover:shadow-card transition">
+        <div class="w-12 h-12 rounded-2xl bg-amber-50 border border-amber-200 grid place-items-center"><i data-lucide="graduation-cap" class="w-6 h-6 text-amber-600"></i></div>
+        <h3 class="font-bold text-[17px] mt-4">Accompagnement local</h3>
+        <p class="text-sm text-slate-600 mt-1.5 leading-6">Formation à Dakar & en ligne, support Wolof, on-site au marché HLM & Sandaga. On ne vous laisse jamais seul.</p>
+        <div class="mt-3 inline-flex items-center gap-2 text-sm font-semibold bg-amber-50 border border-amber-200 px-3 py-1.5 rounded-full"><i data-lucide="map-pin" class="w-4 h-4"></i> Dakar, Mermoz • Disponible</div>
+      </article>
+    </div>
+  </section>
+
+  <!-- COMMENT CA MARCHE -->
+  <section id="marche" class="bg-slate-50 border-y border-line">
+    <div class="max-w-[1200px] mx-auto px-4 py-12">
+      <div class="grid lg:grid-cols-3 gap-6 items-start">
+        <div class="lg:col-span-1">
+          <div class="text-xs font-bold tracking-[0.14em] text-slate-500">EN 3 ÉTAPES • 15 MINUTES</div>
+          <h3 class="font-display font-extrabold text-[28px] leading-none mt-2">De zéro à ventes<br/>automatiques.</h3>
+          <p class="text-slate-600 text-sm mt-3">Pas de code requis. Connectez, formez, vendez.</p>
+          <a href="#" class="mt-5 inline-flex items-center gap-2 bg-ink text-white px-5 py-3 rounded-full font-semibold text-sm">Commencer maintenant <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+        </div>
+        <div class="lg:col-span-2 grid sm:grid-cols-3 gap-4">
+          <div class="bg-white border border-line rounded-2xl p-5">
+            <div class="w-9 h-9 rounded-full bg-ink text-white grid place-items-center font-bold text-sm">1</div>
+            <h4 class="font-bold mt-3">Connectez</h4>
+            <p class="text-sm text-slate-600 mt-1">Importez votre catalogue (Excel, Shopify, WhatsApp). L’agent apprend vos produits, prix et FAQ.</p>
+            <div class="mt-3 flex gap-2"><span class="text-xs bg-slate-100 border border-line px-2 py-1 rounded-full">Excel</span><span class="text-xs bg-slate-100 border border-line px-2 py-1 rounded-full">Shopify</span></div>
+          </div>
+          <div class="bg-white border border-line rounded-2xl p-5">
+            <div class="w-9 h-9 rounded-full bg-primary text-white grid place-items-center font-bold text-sm">2</div>
+            <h4 class="font-bold mt-3">Formez</h4>
+            <p class="text-sm text-slate-600 mt-1">Corrigez 10 réponses, ajoutez votre ton (familier / premium). L’IA s’adapte à votre boutique.</p>
+            <div class="mt-3 text-xs font-mono bg-slate-900 text-emerald-300 px-2.5 py-1.5 rounded-lg">Apprentissage: 94% précision</div>
+          </div>
+          <div class="bg-white border border-line rounded-2xl p-5">
+            <div class="w-9 h-9 rounded-full bg-emerald-500 text-white grid place-items-center font-bold text-sm">3</div>
+            <h4 class="font-bold mt-3">Vendez</h4>
+            <p class="text-sm text-slate-600 mt-1">L’agent répond, encaisse et transmet au livreur. Vous suivez tout en FCFA depuis votre téléphone.</p>
+            <div class="mt-3 text-xs font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2.5 py-1 rounded-full inline-flex gap-1"><i data-lucide="trending-up" class="w-3.5 h-3.5"></i> ROI moyen 7 jours</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEMO + DASHBOARD -->
+  <section id="demo" class="max-w-[1200px] mx-auto px-4 py-14">
+    <div class="grid lg:grid-cols-2 gap-6">
+      <div class="bg-ink text-white rounded-[24px] p-6 sm:p-8 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-sky-500/20"></div>
+        <div class="relative">
+          <div class="inline-flex items-center gap-2 bg-white/10 border border-white/15 rounded-full px-3 py-1 text-xs font-semibold"><span class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></span> DÉMO LIVE • Agent Hub Digital</div>
+          <h3 class="font-display font-extrabold text-[26px] leading-none mt-4">Parlez à l’agent.<br/>Il vous comprend.</h3>
+          <p class="text-white/70 text-sm mt-2">Essayez en Wolof, Français ou Anglais. Il gère prix, tailles, livraison et paiement.</p>
+
+          <div class="mt-6 bg-white rounded-2xl p-3 text-ink">
+            <div id="demoLog" class="space-y-2 max-h-[260px] overflow-auto pr-1">
+              <div class="bg-slate-100 rounded-2xl rounded-tl-sm px-3 py-2 text-sm max-w-[88%]">Salam 👋 ! Je suis l’agent Hub Digital. Comment puis-je vous aider aujourd’hui ? (ex: “Boubou M bleu prix ?”)</div>
+            </div>
+            <div class="mt-3 flex gap-2">
+              <input id="demoInput" placeholder="Ex: Salaam, boubou bi ñaata la ?" class="flex-1 bg-slate-50 border border-line rounded-full px-4 py-2.5 text-sm outline-none focus:ring-2 focus:ring-primary/20" />
+              <button id="demoSend" class="px-5 py-2.5 rounded-full bg-ink text-white font-semibold text-sm">Envoyer</button>
+            </div>
+            <div class="mt-2 flex flex-wrap gap-1.5">
+              <button class="demoChip text-xs border border-line bg-slate-50 px-3 py-1.5 rounded-full hover:bg-white">Livraison à Saint-Louis ?</button>
+              <button class="demoChip text-xs border border-line bg-slate-50 px-3 py-1.5 rounded-full hover:bg-white">Je veux payer Orange Money</button>
+              <button class="demoChip text-xs border border-line bg-slate-50 px-3 py-1.5 rounded-full hover:bg-white">Montre moi les sneakers</button>
+            </div>
+          </div>
+
+          <div class="mt-4 flex items-center gap-3 text-xs text-white/60">
+            <span class="inline-flex items-center gap-1.5"><i data-lucide="shield" class="w-3.5 h-3.5"></i> Données chiffrées</span>
+            <span class="w-px h-4 bg-white/20"></span>
+            <span>Conforme Loi Sénégal n°2008-12</span>
+          </div>
+        </div>
+      </div>
+
+      <div id="dashboard" class="bg-white border border-line rounded-[24px] p-6 shadow-soft">
+        <div class="flex items-center justify-between">
+          <h3 class="font-display font-bold text-lg">Dashboard commandes</h3>
+          <div class="flex items-center gap-2">
+            <select class="text-sm border border-line rounded-full px-3 py-1.5 bg-white"><option>Aujourd’hui</option><option>7 jours</option><option>30 jours</option></select>
+            <button class="w-8 h-8 grid place-items-center rounded-full bg-ink text-white"><i data-lucide="download" class="w-4 h-4"></i></button>
+          </div>
+        </div>
+
+        <div class="mt-4 grid grid-cols-3 gap-3">
+          <div class="rounded-2xl bg-slate-900 text-white p-4">
+            <div class="text-[11px] tracking-widest text-white/60">REVENU</div>
+            <div class="font-extrabold text-xl mt-1">1 248 000 <span class="text-sm font-semibold text-white/70">FCFA</span></div>
+            <div class="text-xs text-emerald-300 mt-1">↑ 12.4% vs hier</div>
+          </div>
+          <div class="rounded-2xl bg-white border border-line p-4">
+            <div class="text-[11px] tracking-widest text-slate-500">PANIER MOYEN</div>
+            <div class="font-extrabold text-xl mt-1">21 500</div>
+            <div class="text-xs text-slate-500">FCFA</div>
+          </div>
+          <div class="rounded-2xl bg-white border border-line p-4">
+            <div class="text-[11px] tracking-widest text-slate-500">TAUX CONVERSION</div>
+            <div class="font-extrabold text-xl mt-1">4.8%</div>
+            <div class="text-xs text-emerald-600">+0.6pt</div>
+          </div>
+        </div>
+
+        <div class="mt-4">
+          <div class="flex items-center justify-between text-sm font-semibold"><span>Commandes récentes</span><a href="#" class="text-primary">Voir tout</a></div>
+          <div class="mt-3 overflow-hidden rounded-2xl border border-line">
+            <table class="w-full text-sm">
+              <thead class="bg-slate-50 text-xs tracking-widest text-slate-500"><tr><th class="text-left px-3 py-2 font-semibold">COMMANDE</th><th class="text-left px-3 py-2 font-semibold">CLIENT</th><th class="text-left px-3 py-2 font-semibold">STATUT</th><th class="text-right px-3 py-2 font-semibold">TOTAL</th></tr></thead>
+              <tbody class="divide-y divide-line">
+                <tr class="hover:bg-slate-50"><td class="px-3 py-2.5 font-mono text-xs">#4823 • WhatsApp</td><td class="px-3 py-2.5 flex items-center gap-2"><img src="https://i.pravatar.cc/100?img=14" class="w-6 h-6 rounded-full"/> Awa K.</td><td class="px-3 py-2.5"><span class="bg-emerald-50 text-emerald-700 border border-emerald-200 px-2 py-1 rounded-full text-xs font-semibold">Payée • Wave</span></td><td class="px-3 py-2.5 text-right font-bold">32 000 FCFA</td></tr>
+                <tr class="hover:bg-slate-50"><td class="px-3 py-2.5 font-mono text-xs">#4822 • Instagram</td><td class="px-3 py-2.5 flex items-center gap-2"><img src="https://i.pravatar.cc/100?img=22" class="w-6 h-6 rounded-full"/> Cheikh B.</td><td class="px-3 py-2.5"><span class="bg-amber-50 text-amber-700 border border-amber-200 px-2 py-1 rounded-full text-xs font-semibold">En livraison</span></td><td class="px-3 py-2.5 text-right font-bold">18 500 FCFA</td></tr>
+                <tr class="hover:bg-slate-50"><td class="px-3 py-2.5 font-mono text-xs">#4821 • Site web</td><td class="px-3 py-2.5 flex items-center gap-2"><img src="https://i.pravatar.cc/100?img=5" class="w-6 h-6 rounded-full"/> Fatou N.</td><td class="px-3 py-2.5"><span class="bg-slate-900 text-white px-2 py-1 rounded-full text-xs font-semibold">Livrée</span></td><td class="px-3 py-2.5 text-right font-bold">27 000 FCFA</td></tr>
+                <tr class="hover:bg-slate-50"><td class="px-3 py-2.5 font-mono text-xs">#4820 • WhatsApp</td><td class="px-3 py-2.5 flex items-center gap-2"><img src="https://i.pravatar.cc/100?img=18" class="w-6 h-6 rounded-full"/> Seydou M.</td><td class="px-3 py-2.5"><span class="bg-sky-50 text-sky-700 border border-sky-200 px-2 py-1 rounded-full text-xs font-semibold">En préparation</span></td><td class="px-3 py-2.5 text-right font-bold">45 000 FCFA</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="mt-4 flex flex-wrap gap-2">
+          <a href="#" class="inline-flex items-center gap-2 bg-ink text-white px-4 py-2 rounded-full text-sm font-semibold"><i data-lucide="bar-chart-3" class="w-4 h-4"></i> Exporter en Excel</a>
+          <a href="#" class="inline-flex items-center gap-2 bg-white border border-line px-4 py-2 rounded-full text-sm font-semibold"><i data-lucide="code" class="w-4 h-4"></i> Voir l’API</a>
+          <span class="ml-auto text-xs text-slate-500 inline-flex items-center gap-1"><span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span> Sync toutes les 30s</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="bg-ink text-white">
+    <div class="max-w-[1200px] mx-auto px-4 py-12">
+      <div class="flex flex-wrap items-end justify-between gap-4">
+        <h3 class="font-display font-extrabold text-[28px] leading-none">Ils vendent mieux,<br/>avec Hub Digital.</h3>
+        <div class="flex items-center gap-2 text-sm">
+          <span class="bg-white text-ink font-bold px-3 py-1 rounded-full">4.9/5</span>
+          <span class="text-white/70">sur 312 avis Google • Dakar, Thiès, Saint-Louis</span>
+        </div>
+      </div>
+      <div class="mt-8 grid md:grid-cols-3 gap-4">
+        <figure class="bg-white text-ink rounded-2xl p-5">
+          <div class="flex items-center gap-3"><img src="https://i.pravatar.cc/100?img=9" class="w-10 h-10 rounded-full"/><div><div class="font-bold text-sm">Marième – Maroquinerie Keur Massar</div><div class="text-xs text-slate-500">Passée de 3 à 27 commandes / jour</div></div></div>
+          <p class="text-sm leading-6 mt-3">“Avant je répondais jusqu’à 2h du matin. Maintenant l’agent gère et je ne fais que valider les livraisons. Mon CA a doublé en 1 mois.”</p>
+          <div class="mt-3 text-amber-500 text-sm">★★★★★</div>
+        </figure>
+        <figure class="bg-white text-ink rounded-2xl p-5">
+          <div class="flex items-center gap-3"><img src="https://i.pravatar.cc/100?img=11" class="w-10 h-10 rounded-full"/><div><div class="font-bold text-sm">Ibrahima – Mode Homme Sandaga</div><div class="text-xs text-slate-500">-62% de paniers abandonnés</div></div></div>
+          <p class="text-sm leading-6 mt-3">“Il parle même Wolof ! Les clients adorent. Et le lien Wave direct dans WhatsApp, c’est game changer. Fini les ‘je vous reviens’.”</p>
+          <div class="mt-3 text-amber-500 text-sm">★★★★★</div>
+        </figure>
+        <figure class="bg-white text-ink rounded-2xl p-5">
+          <div class="flex items-center gap-3"><img src="https://i.pravatar.cc/100?img=32" class="w-10 h-10 rounded-full"/><div><div class="font-bold text-sm">Aissatou – Cosmétiques Dakar</div><div class="text-xs text-slate-500">+41% de récurrence client</div></div></div>
+          <p class="text-sm leading-6 mt-3">“Les relances auto après livraison + le suivi Paps intégré, mes clientes reviennent sans que j’aie à relancer. Magique.”</p>
+          <div class="mt-3 text-amber-500 text-sm">★★★★★</div>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="tarifs" class="max-w-[1200px] mx-auto px-4 py-14">
+    <div class="text-center max-w-[700px] mx-auto">
+      <div class="inline-flex items-center gap-2 bg-orange-50 border border-orange-200 rounded-full px-3 py-1 text-xs font-bold tracking-widest text-primary">TARIFS EN FCFA • SANS ENGAGEMENT</div>
+      <h3 class="font-display font-extrabold text-[34px] leading-none mt-3">Choisissez votre rythme.</h3>
+      <p class="text-slate-600 mt-3">Commencez gratuitement, passez Pro quand vous explosez les commandes. Paiement Wave / OM / carte.</p>
+      <div class="mt-6 inline-flex bg-slate-100 p-1 rounded-full">
+        <button id="billMonthly" class="px-5 py-2 rounded-full bg-white shadow-soft font-semibold text-sm">Mensuel</button>
+        <button id="billYearly" class="px-5 py-2 rounded-full font-semibold text-sm text-slate-500">Annuel <span class="bg-emerald-500 text-white text-xs px-1.5 py-0.5 rounded-full ml-1">-20%</span></button>
+      </div>
+    </div>
+
+    <div class="mt-8 grid lg:grid-cols-3 gap-4">
+      <div class="bg-white border border-line rounded-[24px] p-6 flex flex-col">
+        <h4 class="font-bold">Starter</h4>
+        <p class="text-sm text-slate-500">Parfait pour tester l’IA sur votre boutique.</p>
+        <div class="mt-4"><span class="font-display font-extrabold text-[36px] price" data-m="0" data-y="0">Gratuit</span><span class="text-slate-500 text-sm"> /14 jours</span></div>
+        <ul class="mt-4 space-y-2 text-sm">
+          <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-600"></i> 300 messages IA / mois</li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-600"></i> 1 boutique (WhatsApp)</li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-600"></i> Paiement Wave inclus</li>
+          <li class="flex gap-2 text-slate-400"><i data-lucide="x" class="w-4 h-4"></i> Sans dashboard avancé</li>
+        </ul>
+        <a href="#" class="mt-6 text-center border border-line rounded-full py-3 font-semibold hover:bg-slate-50">Essayer gratuitement</a>
+        <p class="text-center text-xs text-slate-500 mt-2">Sans carte bancaire</p>
+      </div>
+
+      <div class="bg-ink text-white rounded-[24px] p-6 flex flex-col relative overflow-hidden shadow-card">
+        <div class="absolute -right-10 -top-10 w-40 h-40 bg-primary/25 blur-3xl rounded-full"></div>
+        <div class="inline-flex bg-primary text-white text-xs font-bold px-3 py-1 rounded-full w-fit">LE PLUS POPULAIRE</div>
+        <h4 class="font-bold mt-3 flex items-center gap-2">Pro <span class="text-xs bg-white/15 border border-white/15 px-2 py-1 rounded-full">Recommandé</span></h4>
+        <p class="text-sm text-white/70">Pour les boutiques qui reçoivent 20+ messages / jour.</p>
+        <div class="mt-4 flex items-baseline gap-2"><span class="font-display font-extrabold text-[36px] price" data-m="29000" data-y="23200">29 000</span><span class="text-white/70">FCFA / mois</span></div>
+        <ul class="mt-4 space-y-2 text-sm">
+          <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> <b>10 000 messages IA</b> / mois</li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> WhatsApp + Insta + Site</li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> Stock & livraisons auto (Paps, Yobalema)</li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> Dashboard FCFA + API complète</li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> Support WhatsApp prioritaire</li>
+        </ul>
+        <a href="#" class="shine mt-6 text-center bg-white text-ink rounded-full py-3 font-bold hover:bg-slate-100">Démarrer en Pro</a>
+        <p class="text-center text-xs text-white/60 mt-2">Facturation mensuelle • Annulable à tout moment</p>
+      </div>
+
+      <div class="bg-white border border-line rounded-[24px] p-6 flex flex-col">
+        <h4 class="font-bold">Enterprise</h4>
+        <p class="text-sm text-slate-500">Pour les grossistes, marketplaces et franchises.</p>
+        <div class="mt-4"><span class="font-display font-extrabold text-[36px]">Sur devis</span></div>
+        <ul class="mt-4 space-y-2 text-sm">
+          <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-600"></i> Messages illimités</li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-600"></i> Multi-boutiques & rôles équipe</li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-600"></i> On-premise / hébergement Sénégal</li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-600"></i> Formation & intégration dédiée</li>
+        </ul>
+        <a href="#" class="mt-6 text-center bg-slate-50 border border-line rounded-full py-3 font-semibold hover:bg-slate-100">Parler à l’équipe</a>
+        <p class="text-center text-xs text-slate-500 mt-2">Réponse sous 2h ouvrées</p>
+      </div>
+    </div>
+
+    <div class="mt-6 bg-amber-50 border border-amber-200 rounded-2xl px-4 py-3 flex flex-wrap items-center gap-3 text-sm">
+      <span class="inline-flex items-center gap-2 font-bold"><i data-lucide="gift" class="w-4 h-4"></i> Offre Tabaski :</span>
+      <span>-30% sur Pro avec le code <b class="font-mono bg-white border border-amber-200 px-2 py-1 rounded-full">TABASKI30</b> jusqu’au 15 juin</span>
+      <a href="#" class="ml-auto font-semibold text-primary hover:underline">Activer →</a>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="bg-slate-50 border-y border-line">
+    <div class="max-w-[1200px] mx-auto px-4 py-12 grid lg:grid-cols-12 gap-8">
+      <div class="lg:col-span-5">
+        <h3 class="font-display font-extrabold text-[24px] leading-none">Questions fréquentes</h3>
+        <p class="text-sm text-slate-600 mt-2">Tout ce que les commerçants sénégalais nous demandent avant de se lancer.</p>
+        <div class="mt-6 bg-white border border-line rounded-2xl p-4 flex gap-3">
+          <img src="https://i.pravatar.cc/100?img=15" class="w-10 h-10 rounded-full"/>
+          <div class="text-sm"><div class="font-bold">Besoin d’aide ?</div><div class="text-slate-600">Discutez avec <b>Fatou, Customer Success</b> sur WhatsApp.</div><a href="#" class="mt-2 inline-flex items-center gap-2 bg-emerald-500 text-white px-4 py-2 rounded-full font-semibold"><i data-lucide="message-circle" class="w-4 h-4"></i> Ouvrir WhatsApp</a></div>
+        </div>
+      </div>
+      <div class="lg:col-span-7 grid gap-3">
+        <details open class="group bg-white border border-line rounded-2xl p-5">
+          <summary class="list-none flex items-center justify-between cursor-pointer font-semibold">L’agent parle-t-il vraiment Wolof ? <i data-lucide="chevron-down" class="w-5 h-5 group-open:rotate-180 transition"></i></summary>
+          <p class="text-sm text-slate-600 mt-2 leading-6">Oui. Il comprend le Wolof latin (ex: “ñata la”, “am na ?”) et peut répondre en Wolof, Français ou un mélange — selon la langue du client. Vous choisissez le ton.</p>
+        </details>
+        <details class="group bg-white border border-line rounded-2xl p-5">
+          <summary class="list-none flex items-center justify-between cursor-pointer font-semibold">Comment fonctionne le paiement Wave / Orange Money ? <i data-lucide="chevron-down" class="w-5 h-5 group-open:rotate-180 transition"></i></summary>
+          <p class="text-sm text-slate-600 mt-2 leading-6">L’agent génère un lien de paiement sécurisé et le client paie sans quitter WhatsApp. Vous recevez une notification instantanée et la commande passe en “Payée” automatiquement.</p>
+        </details>
+        <details class="group bg-white border border-line rounded-2xl p-5">
+          <summary class="list-none flex items-center justify-between cursor-pointer font-semibold">Et la livraison ? <i data-lucide="chevron-down" class="w-5 h-5 group-open:rotate-180 transition"></i></summary>
+          <p class="text-sm text-slate-600 mt-2 leading-6">Intégration native avec Paps, Yobalema, SenExpress et livreurs indépendants. L’agent calcule les frais selon la zone (Dakar 2.000 FCFA, Thiès 3.500 FCFA, etc.) et transmet l’adresse + téléphone au livreur.</p>
+        </details>
+        <details class="group bg-white border border-line rounded-2xl p-5">
+          <summary class="list-none flex items-center justify-between cursor-pointer font-semibold">Mes données restent-elles au Sénégal ? <i data-lucide="chevron-down" class="w-5 h-5 group-open:rotate-180 transition"></i></summary>
+          <p class="text-sm text-slate-600 mt-2 leading-6">Oui, hébergement principal à Dakar (Sonatel Data Center) avec chiffrement AES-256. Conforme à la loi sénégalaise sur la protection des données personnelles.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="max-w-[1200px] mx-auto px-4 py-10">
+    <div class="bg-ink rounded-[28px] p-6 sm:p-8 lg:p-10 text-white relative overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-br from-primary/30 via-transparent to-sky-500/20"></div>
+      <div class="absolute -right-16 -bottom-16 w-80 h-80 bg-primary/20 blur-3xl rounded-full"></div>
+      <div class="relative grid lg:grid-cols-12 gap-8 items-center">
+        <div class="lg:col-span-7">
+          <h3 class="font-display font-extrabold text-[30px] leading-none">Prêt à laisser l’IA<br/>vendre pour vous ?</h3>
+          <p class="text-white/70 mt-3 max-w-[560px]">Rejoignez 847 boutiques sénégalaises qui automatisent déjà leurs ventes. Installation en 15 minutes, sans développeur.</p>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <a href="#" class="inline-flex items-center gap-2 bg-white text-ink px-6 py-3 rounded-full font-bold">Créer mon agent gratuitement <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+            <span class="inline-flex items-center gap-2 text-sm text-white/70"><i data-lucide="shield-check" class="w-4 h-4"></i> Essayez 14 jours, sans CB</span>
+          </div>
+        </div>
+        <div class="lg:col-span-5">
+          <div class="bg-white rounded-2xl p-4 text-ink">
+            <div class="text-xs font-bold tracking-widest text-slate-500">CODE SOURCE & API</div>
+            <pre class="mt-2 bg-slate-900 text-emerald-300 rounded-xl p-4 text-xs font-mono leading-5 overflow-x-auto">git clone https://github.com/sadibouba938-cloud/Hub-Digital-Agent.git
+cd Hub-Digital-Agent
+pip install -r requirements.txt
+python agent.py --lang wolof --channel whatsapp</pre>
+            <div class="mt-3 flex gap-2">
+              <a href="https://github.com/sadibouba938-cloud/Hub-Digital-Agent" target="_blank" class="flex-1 text-center bg-ink text-white rounded-full py-2.5 text-sm font-semibold inline-flex items-center justify-center gap-2"><i data-lucide="github" class="w-4 h-4"></i> Voir sur GitHub</a>
+              <a href="#" class="px-4 py-2.5 rounded-full border border-line text-sm font-semibold">Docs API</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-line bg-white">
+    <div class="max-w-[1200px] mx-auto px-4 py-10">
+      <div class="grid md:grid-cols-4 gap-8 text-sm">
+        <div>
+          <div class="flex items-center gap-2 font-display font-extrabold text-lg"><span class="w-8 h-8 rounded-xl bg-ink text-white grid place-items-center">H.</span> HUB DIGITAL</div>
+          <p class="text-slate-600 mt-2 leading-6">Agents IA pour le e-commerce et services digitaux au Sénégal. Conçu à Dakar, pour l’Afrique. Base robuste, évolutive et locale.</p>
+          <div class="mt-4 flex gap-2">
+            <a class="w-9 h-9 rounded-full border border-line grid place-items-center hover:bg-slate-50"><i data-lucide="github" class="w-4 h-4"></i></a>
+            <a class="w-9 h-9 rounded-full border border-line grid place-items-center hover:bg-slate-50"><i data-lucide="linkedin" class="w-4 h-4"></i></a>
+            <a class="w-9 h-9 rounded-full border border-line grid place-items-center hover:bg-slate-50"><i data-lucide="instagram" class="w-4 h-4"></i></a>
+            <a class="w-9 h-9 rounded-full border border-line grid place-items-center hover:bg-slate-50"><i data-lucide="message-circle" class="w-4 h-4"></i></a>
+          </div>
+        </div>
+        <div>
+          <div class="font-bold">Produit</div>
+          <ul class="mt-3 space-y-2 text-slate-600">
+            <li><a href="#" class="hover:text-ink">Agent WhatsApp</a></li>
+            <li><a href="#" class="hover:text-ink">Dashboard FCFA</a></li>
+            <li><a href="#" class="hover:text-ink">API & Webhooks</a></li>
+            <li><a href="#" class="hover:text-ink">Automatisations Python</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="font-bold">Ressources</div>
+          <ul class="mt-3 space-y-2 text-slate-600">
+            <li><a href="#" class="hover:text-ink">Documentation</a></li>
+            <li><a href="#" class="hover:text-ink">Tutoriels Wolof</a></li>
+            <li><a href="#" class="hover:text-ink">Statut système</a></li>
+            <li><a href="https://github.com/sadibouba938-cloud/Hub-Digital-Agent" class="hover:text-ink">GitHub</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="font-bold">Contact</div>
+          <ul class="mt-3 space-y-2 text-slate-600">
+            <li class="flex gap-2"><i data-lucide="map-pin" class="w-4 h-4 mt-0.5"></i> Mermoz, Dakar — Sénégal</li>
+            <li class="flex gap-2"><i data-lucide="phone" class="w-4 h-4 mt-0.5"></i> +221 77 123 45 67</li>
+            <li class="flex gap-2"><i data-lucide="mail" class="w-4 h-4 mt-0.5"></i> hello@hubdigital.sn</li>
+          </ul>
+          <div class="mt-4 inline-flex items-center gap-2 bg-emerald-50 border border-emerald-200 px-3 py-1.5 rounded-full text-xs font-semibold text-emerald-700"><span class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span> Support répond en &lt; 5 min</div>
+        </div>
+      </div>
+      <div class="mt-8 pt-6 border-t border-line flex flex-wrap gap-3 items-center justify-between text-xs text-slate-500">
+        <span>© 2026 Hub Digital Agent — Tous droits réservés • Fait avec ❤️ à Dakar</span>
+        <span class="flex gap-4"><a href="#" class="hover:text-ink">Confidentialité</a><a href="#" class="hover:text-ink">CGU</a><a href="#" class="hover:text-ink">Mentions légales</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+    const burger = document.getElementById('burger');
+    const mobileNav = document.getElementById('mobileNav');
+    burger?.addEventListener('click', () => mobileNav.classList.toggle('hidden'));
+
+    // Chat in hero
+    const chatLog = document.getElementById('chatLog');
+    const chatInput = document.getElementById('chatInput');
+    const chatSend = document.getElementById('chatSend');
+    function addChat(text, from='user'){
+      const wrap = document.createElement('div');
+      wrap.className = from==='user' ? 'flex justify-end' : 'flex gap-2';
+      wrap.innerHTML = from==='user' ? `<div class="bg-ink text-white rounded-2xl rounded-tr-sm px-3 py-2 text-[13px] max-w-[85%]">${text}</div>` : `<div class="bg-slate-100 rounded-2xl rounded-tl-sm px-3 py-2 text-[13px] max-w-[85%]">${text}</div>`;
+      chatLog.appendChild(wrap);
+      chatLog.scrollTop = chatLog.scrollHeight;
+    }
+    function botReply(q){
+      const l = q.toLowerCase();
+      if(l.includes('wolof') || l.includes('ñata') || l.includes('nanga')) return "Waaw, man naa la tontu ci Wolof 😊 Boubou bi 25.000 FCFA la, livraison Dakar 2.000 FCFA. Bëgg naa ko ? (Oui je parle Wolof !)";
+      if(l.includes('prix') || l.includes('ñata')) return "Boubou bleu M: <b>25.000 FCFA</b>. Pack 2 = 45.000 FCFA (économise 5.000 FCFA). Livraison incluse si paiement Wave maintenant ?";
+      if(l.includes('orange')) return "Parfait, je génère un lien <b>Orange Money</b> pour 27.000 FCFA (produit + livraison). Vous recevrez une demande de paiement sur le 77... Confirmer ?";
+      if(l.includes('livraison') || l.includes('thiès') || l.includes('saint')) return "Oui, on livre partout au Sénégal 🇸🇳 : Dakar (24h, 2.000 FCFA), Thiès/Saint-Louis (48h, 3.500 FCFA), autres régions 5.000 FCFA via Paps/Yobalema.";
+      if(l.includes('taille') || l.includes('m') ) return "Taille M: poitrine 98cm, longueur 145cm. Coupe ample type boubou sénégalais. Échange gratuit si ça ne va pas.";
+      if(l.includes('tracking')||l.includes('commande')) return "Commande #4821 : ✅ Payée • 📦 En livraison avec Paps (ETA ce soir 18h). Suivi: paps.sn/track/4821";
+      return "Merci pour votre message ! Notre agent peut vérifier le stock, calculer la livraison et générer un lien Wave/OM en 5 secondes. Essayez : “1 boubou M bleu, livraison Dakar, Wave”";
+    }
+    function sendHero(){
+      const v = chatInput.value.trim();
+      if(!v) return;
+      addChat(v,'user');
+      chatInput.value='';
+      setTimeout(()=> addChat(botReply(v),'bot'), 600);
+    }
+    chatSend?.addEventListener('click', sendHero);
+    chatInput?.addEventListener('keydown', e=>{ if(e.key==='Enter') sendHero(); });
+    document.querySelectorAll('.quickReply').forEach(b=> b.addEventListener('click', ()=>{
+      chatInput.value = b.textContent;
+      sendHero();
+    }));
+
+    // Demo box
+    const demoLog = document.getElementById('demoLog');
+    const demoInput = document.getElementById('demoInput');
+    const demoSend = document.getElementById('demoSend');
+    function addDemo(text, from='user'){
+      const d = document.createElement('div');
+      d.className = from==='user' ? 'flex justify-end' : 'flex';
+      d.innerHTML = from==='user'
+        ? `<div class="bg-ink text-white rounded-2xl rounded-tr-sm px-3 py-2 text-sm max-w-[88%]">${text}</div>`
+        : `<div class="bg-amber-50 border border-amber-200 rounded-2xl rounded-tl-sm px-3 py-2 text-sm max-w-[88%]">${text}</div>`;
+      demoLog.appendChild(d);
+      demoLog.scrollTop = demoLog.scrollHeight;
+    }
+    function demoReply(q){
+      const l = q.toLowerCase();
+      if(l.includes('salaam') || l.includes('salam') || l.includes('ñata') || l.includes('wolof')) return "Salam aleykoum 🙏 Man Hub Digital laa. Boubou bi 25.000 FCFA, sneakers 35.000 FCFA. Lan mo la neex ? (Je peux continuer en Wolof ou Français comme tu veux)";
+      if(l.includes('sneaker') || l.includes('chaussure')) return "Sneakers dispo du 38 au 45 — <b>35.000 FCFA</b>. Couleurs: blanc, noir, beige. Pointure ? Je vérifie le stock live.";
+      if(l.includes('orange')) return "Top — lien <b>Orange Money</b> prêt. Montant: 27.000 FCFA. Tape ton numéro et je t’envoie la demande de paiement USSD.";
+      if(l.includes('livraison') || l.includes('saint-louis') || l.includes('thies')) return "Livraison nationale 🇸🇳 : Dakar 2.000 FCFA (24h), Saint-Louis/Thiès 3.500 FCFA (48h). Donne ton quartier + téléphone, on calcule.";
+      if(l.includes('prix') ) return "Boubou: 25.000 FCFA • Sneakers: 35.000 FCFA • Pack complet 55.000 FCFA (au lieu de 60.000). Paiement Wave/OM/carte.";
+      return "Parfait ! Dis-moi par ex: <i>“2 boubous M à Dakar, Wave”</i> et je te génère la commande complète en 10 secondes ⚡";
+    }
+    function sendDemo(){
+      const v = demoInput.value.trim();
+      if(!v) return;
+      addDemo(v,'user');
+      demoInput.value='';
+      setTimeout(()=> addDemo(demoReply(v),'bot'), 700);
+    }
+    demoSend?.addEventListener('click', sendDemo);
+    demoInput?.addEventListener('keydown', e=>{ if(e.key==='Enter') sendDemo(); });
+    document.querySelectorAll('.demoChip').forEach(b=> b.addEventListener('click', ()=>{ demoInput.value = b.textContent; sendDemo(); }));
+
+    // Pricing toggle
+    const billMonthly = document.getElementById('billMonthly');
+    const billYearly = document.getElementById('billYearly');
+    function setBilling(yearly){
+      document.querySelectorAll('.price').forEach(el=>{
+        const m = el.dataset.m, y = el.dataset.y;
+        if(!m) return;
+        el.textContent = yearly ? Number(y).toLocaleString('fr-FR') : Number(m).toLocaleString('fr-FR');
+      });
+      if(yearly){
+        billYearly.className = "px-5 py-2 rounded-full bg-white shadow-soft font-semibold text-sm";
+        billMonthly.className = "px-5 py-2 rounded-full font-semibold text-sm text-slate-500";
+      } else {
+        billMonthly.className = "px-5 py-2 rounded-full bg-white shadow-soft font-semibold text-sm";
+        billYearly.className = "px-5 py-2 rounded-full font-semibold text-sm text-slate-500";
+      }
+    }
+    billMonthly?.addEventListener('click', ()=> setBilling(false));
+    billYearly?.addEventListener('click', ()=> setBilling(true));
+  </script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+{
+  "name": "hub-digital-agent",
+  "version": "2.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Hub Digital Agent — Agents IA pour e-commerce et services digitaux au Sénégal",
+  "scripts": {
+    "dev": "vite --port 4174 --host 0.0.0.0",
+    "preview": "vite preview --port 4174 --host 0.0.0.0",
+    "build": "vite build",
+    "serve": "vite preview --port 4174 --host 0.0.0.0"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "vite": "^5.4.0"
+  }
+}
