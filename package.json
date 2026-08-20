@@ -13,5 +13,27 @@
   "dependencies": {},
   "devDependencies": {
     "vite": "^5.4.0"
+fetch(`${API_URL}/api/message`, {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ text: "Hello Hub Digital" })
+})
+  .then(res => res.json())
+  .then(data => console.log(data));
+{
+  "name": "hub-digital-agent",
+  "version": "1.0.0",
+  "description": "Hub Digital frontend connected to Railway backend",
+  "main": "src/App.js",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "node-fetch": "^3.3.2"
   }
 }
